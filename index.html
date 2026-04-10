@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        /* 기본 여백 제거 및 폰트 설정 */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            /* 배경 그라데이션 */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* 중앙 콘텐츠 박스 (글래스모피즘 효과) */
+        .container {
+            max-width: 600px;
+            width: 90%;
+            padding: 50px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 이메일 입력 폼 */
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input[type="email"] {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            width: 60%;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff7eb3;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background-color: #ff529a;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* 모바일 화면 대응 */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subscribe-form {
+                flex-direction: column;
+            }
+            input[type="email"], button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>멋진 서비스로 찾아뵙기 위해 열심히 준비 중입니다.<br>이메일을 남겨주시면 오픈 시 가장 먼저 알려드릴게요!</p>
+        
+        <form class="subscribe-form" onsubmit="event.preventDefault(); alert('구독이 완료되었습니다. 감사합니다!'); this.reset();">
+            <input type="email" placeholder="이메일 주소를 입력해주세요" required>
+            <button type="submit">알림 받기</button>
+        </form>
+    </div>
+
+</body>
+</html>
