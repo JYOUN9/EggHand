@@ -3,80 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로젝트 페이지 템플릿</title>
-    <!-- 웹 폰트 및 아이콘 라이브러리 불러오기 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>EggHand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+
     <style>
-        /* 기본 스타일 설정 */
-        body { 
-            font-family: 'Noto Sans KR', sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #fafafa; 
-        }
-        
-        /* 중앙 정렬되는 메인 컨테이너 */
-        .container { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 40px 20px; 
-            background-color: #fff; 
-            box-shadow: 0 0 10px rgba(0,0,0,0.05); 
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
         }
 
-        /* 헤더(제목, 저자, 소속) 스타일 */
-        h1 { text-align: center; font-size: 2.5em; margin-bottom: 10px; color: #222; }
-        .venue { text-align: center; font-size: 1.2em; font-weight: bold; color: #555; margin-bottom: 20px; }
-        .authors { text-align: center; font-size: 1.1em; margin-bottom: 10px; }
-        .authors a { color: #007bff; text-decoration: none; margin: 0 5px; }
-        .authors a:hover { text-decoration: underline; }
-        .affiliations { text-align: center; font-size: 0.9em; color: #666; margin-bottom: 30px; }
-
-        /* 링크 버튼 스타일 (논문, Supp, Poster 등) */
-        .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; }
-        .btn { 
-            display: inline-flex; align-items: center; 
-            padding: 10px 20px; 
-            background-color: #363636; color: #fff; 
-            text-decoration: none; border-radius: 20px; 
-            font-size: 0.9em; transition: 0.2s; 
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 44px 20px;
+            background-color: #fff;
         }
-        .btn i { margin-right: 8px; }
-        .btn:hover { background-color: #555; }
 
-        /* 각 섹션 레이아웃 */
-        .section { margin-bottom: 40px; }
-        .section h2 { 
-            font-size: 1.8em; 
-            border-bottom: 2px solid #eee; 
-            padding-bottom: 10px; 
-            margin-bottom: 20px; 
+        .hero {
+            min-height: 560px;
+            padding: 22px 30px 34px;
+            color: #fff;
+            background:
+                linear-gradient(rgba(20, 39, 36, 0.78), rgba(20, 39, 36, 0.78)),
+                var(--hero-bg, url("fig/hero-bg.svg")) center / cover no-repeat;
+            box-sizing: border-box;
+            display: grid;
+            place-items: center;
         }
-        
-        /* 반응형 이미지/영상 (Teaser 및 Method Pipeline 등) */
-        .responsive-img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
-        .text-justify { text-align: justify; }
 
-        /* 결과물을 보여주기 위한 2단 그리드 */
-        .grid-2 { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
+        .brand {
+            font-size: 1.2em;
+            font-weight: 300;
+            letter-spacing: 0;
+            line-height: 1;
         }
-        .video-card { text-align: center; }
-        .video-card img, .video-card video { 
-            width: 100%; 
-            border-radius: 8px; 
-            background-color: #eee; 
+
+        .hero-content {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            align-self: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.05em;
+            font-weight: 400;
+            line-height: 1.35;
+            letter-spacing: 0;
+            margin: 0 0 24px;
+            color: #fff;
+        }
+
+        .venue {
+            text-align: center;
+            font-size: 1.55em;
+            font-weight: 700;
+            color: #f4f4f4;
+            margin-bottom: 18px;
+        }
+
+        .authors {
+            text-align: center;
+            font-size: 1.18em;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .authors a {
+            text-decoration: none;
+            margin: 0 2px;
+        }
+
+        .authors span {
+            margin: 0 2px;
+        }
+
+        .authors a.author-link {
+            color: #69a7ff;
+        }
+
+        .authors a:hover {
+            text-decoration: underline;
+        }
+
+        .affiliations {
+            text-align: center;
+            font-size: 1.18em;
+            font-weight: 400;
+            color: #f5f5f5;
+            margin-bottom: 0;
+        }
+
+        .author-note {
+            text-align: center;
+            font-size: 1.08em;
+            color: #f5f5f5;
+            margin-bottom: 14px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 36px;
+            margin-bottom: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: rgba(16, 24, 28, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.92em;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .btn:hover {
+            background-color: #b9df7a;
+            border-color: #d7f0a8;
+        }
+
+        .media-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            background: rgba(0, 0, 0, 0.86);
+            box-sizing: border-box;
+        }
+
+        .media-modal.is-open {
+            display: flex;
+        }
+
+        .media-modal-content {
+            max-width: min(96vw, 1400px);
+            max-height: 92vh;
+            border-radius: 8px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .media-modal-pdf {
+            display: none;
+            width: min(96vw, 1400px);
+            height: 92vh;
+            border: 0;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .media-modal-message {
+            display: none;
+            max-width: 520px;
+            padding: 22px 26px;
+            border-radius: 8px;
+            color: #222;
+            background: #fff;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .media-modal-close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.45);
+            font-size: 28px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .media-modal-close:hover {
+            background: rgba(185, 223, 122, 0.75);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .responsive-img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .method-img {
+            display: block;
+            width: min(76%, 760px);
+            margin: 0 auto 20px;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .results-grid {
+            max-width: 780px;
+            margin: 0 auto;
+            gap: 52px;
+        }
+
+        .video-card {
+            text-align: center;
+        }
+
+        .result-media-frame {
+            width: 100%;
+            aspect-ratio: var(--results-aspect-ratio, 16 / 9);
+            border-radius: 8px;
+            background-color: #fff;
             border: 1px solid #ddd;
+            overflow: hidden;
         }
-        .video-card p { font-size: 0.95em; color: #555; margin-top: 10px; font-weight: bold; }
 
-        /* 강조 박스 (Method 등에서 주요 기여점 요약 시 사용) */
+        .result-media-frame img,
+        .result-media-frame video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .video-card p {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .keyword-badge {
+            min-height: 130px;
+            padding: 15px 14px;
+            border: 1px solid #a9d96f;
+            border-radius: 12px;
+            background-color: #f2fbe7;
+            color: #3e6418;
+        }
+
+        .keyword-badge h3 {
+            margin: 0 0 10px;
+            color: #4f8a10;
+            font-size: 1em;
+            line-height: 1.35;
+        }
+
+        .keyword-badge p {
+            margin: 0;
+            font-size: 0.88em;
+            line-height: 1.55;
+        }
+
         .highlight-box {
             background-color: #f8f9fa;
             border-left: 4px solid #007bff;
@@ -85,108 +314,484 @@
             border-radius: 0 4px 4px 0;
         }
 
-        /* 인용(BibTeX) 코드 박스 */
-        .bibtex { 
-            background-color: #f4f4f4; 
-            padding: 15px; 
-            border-radius: 5px; 
-            overflow-x: auto; 
-            font-family: monospace; 
-            font-size: 0.9em; 
+        .bibtex {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.9em;
             color: #333;
+        }
+
+        .error {
+            background: #fff3f3;
+            border: 1px solid #ffc9c9;
+            border-radius: 6px;
+            color: #9b1c1c;
+            padding: 16px;
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <!-- 1. 헤더 영역 -->
-    <header>
-        <h1>프로젝트 제목(Title)을 여기에 입력하세요</h1>
-        <div class="venue">학회명 또는 발표 연도 (예: CVPR 2026 / NeurIPS 2026)</div>
-        <div class="authors">
-            <a href="#">저자 1</a>, <a href="#">저자 2</a>, <a href="#">저자 3</a>
-        </div>
-        <div class="affiliations">
-            1 소속 대학교/기관, 2 공동 연구 기관
+    <header class="hero">
+        <div class="hero-content">
+            <div id="site-venue" class="venue"></div>
+            <div id="site-header"></div>
+            <div id="site-meta"></div>
+            <nav id="site-links" class="links" aria-label="Project links"></nav>
         </div>
     </header>
 
-    <!-- 2. 배지/링크 영역 -->
-    <div class="links">
-        <a href="#" class="btn"><i class="fas fa-file-pdf"></i> Paper</a>
-        <a href="#" class="btn"><i class="fas fa-paperclip"></i> Supp</a>
-        <a href="#" class="btn"><i class="fas fa-chalkboard"></i> Poster</a>
+    <main class="container">
+        <div id="sections"></div>
+    </main>
+
+    <div id="media-modal" class="media-modal" aria-hidden="true">
+        <button class="media-modal-close" type="button" aria-label="Close poster">&times;</button>
+        <img id="media-modal-content" class="media-modal-content" src="" alt="">
+        <iframe id="media-modal-pdf" class="media-modal-pdf" src="" title="Poster PDF"></iframe>
+        <div id="media-modal-message" class="media-modal-message"></div>
     </div>
 
-    <!-- 3. 대표 이미지(Teaser) 영역 -->
-    <div class="section">
-        <img src="https://via.placeholder.com/1000x400?text=Teaser+Image+or+GIF" alt="Teaser" class="responsive-img">
-    </div>
+    <script>
+        const sectionRenderers = {
+            image: renderImageSection,
+            text: renderTextSection,
+            overview: renderOverviewSection,
+            method: renderMethodSection,
+            results: renderResultsSection,
+            citation: renderCitationSection,
+        };
 
-    <!-- 4. 초록(Abstract) 영역 -->
-    <div class="section">
-        <h2>Abstract</h2>
-        <p class="text-justify">
-            여기에 프로젝트의 초록(Abstract)을 작성합니다. 연구의 배경, 제안하는 방법론, 그리고 주요 성과를 요약하여 설명합니다. 논문의 Abstract 파트를 그대로 가져오거나, 웹페이지 방문자를 위해 조금 더 읽기 쉽게 풀어써도 좋습니다.
-        </p>
-    </div>
+        document.addEventListener('DOMContentLoaded', () => {
+            init();
+            startAutoReload();
+            setupMediaModal();
+        });
 
-    <!-- 5. Overview 영역 추가 -->
-    <div class="section">
-        <h2>Overview</h2>
-        <p class="text-justify">
-            이 연구는 Vision-Language-Action (VLA) 파운데이션 모델이 가지는 기존의 한계를 극복하고, 새로운 환경에서의 일반화 성능을 높이는 것을 목표로 합니다. 특히 Egocentric 시점에서의 데이터를 활용하여... (연구의 핵심 동기와 목표를 1~2문단으로 서술합니다).
-        </p>
-        <div class="highlight-box">
-            <strong>Key Contributions:</strong>
-            <ul>
-                <li>첫째, 대규모 데이터셋을 활용한 새로운 모듈 구조 제안</li>
-                <li>둘째, Cross-Embodiment 환경에서도 강건하게 동작하는 적응형 파이프라인 구축</li>
-                <li>셋째, 기존 SOTA 모델 대비 성능 향상 입증</li>
-            </ul>
-        </div>
-    </div>
+        async function init() {
+            try {
+                const site = await loadYaml('data/site.yaml');
+                document.title = site.title || 'EggHand';
+                setHeroBackground(site);
+                renderHeader(site);
+                renderLinks(site);
 
-    <!-- 6. Method 영역 추가 -->
-    <div class="section">
-        <h2>Method</h2>
-        <p class="text-justify">
-            우리가 제안하는 프레임워크의 전체적인 파이프라인은 아래와 같습니다. 입력된 시각적 정보와 언어 명령은 먼저 특정 인코더를 거치게 되며, 이후 제안하는 핵심 모듈을 통해... (구체적인 모델 아키텍처나 알고리즘의 흐름을 설명합니다).
-        </p>
-        <!-- 방법론(아키텍처) 파이프라인 이미지 -->
-        <img src="https://via.placeholder.com/1000x450?text=Method+Pipeline+Architecture" alt="Method Pipeline" class="responsive-img">
-        <p class="text-justify">
-            위 그림에서 볼 수 있듯이, 본 프레임워크는 크게 (1) 특징 추출 단계, (2) K/V Intervention 기반의 모듈식 적응 단계, (3) 최종 행동 및 포즈 예측 단계로 나뉩니다. 각 모듈의 수학적 수식과 구체적인 알고리즘은 논문 본문을 참고해 주시기 바랍니다.
-        </p>
-    </div>
+                const sectionRoot = document.querySelector('#sections');
+                const sections = await Promise.all(
+                    (site.sections || []).map((sectionId) => loadYaml(`data/sections/${sectionId}.yaml`))
+                );
 
-    <!-- 7. 주요 결과물 및 데모 -->
-    <div class="section">
-        <h2>실험 결과 및 데모</h2>
-        <div class="grid-2">
-            <div class="video-card">
-                <img src="https://via.placeholder.com/500x300?text=Task+1+Video/GIF" alt="Task 1">
-                <p>Task 1: 환경 내 객체 조작</p>
-            </div>
-            <div class="video-card">
-                <img src="https://via.placeholder.com/500x300?text=Task+2+Video/GIF" alt="Task 2">
-                <p>Task 2: 연속적인 행동 수행</p>
-            </div>
-        </div>
-    </div>
+                sections.forEach((section) => {
+                    const renderer = sectionRenderers[section.type] || renderTextSection;
+                    sectionRoot.appendChild(renderer(section));
+                });
+            } catch (error) {
+                renderError(error);
+            }
+        }
 
-    <!-- 8. 인용(BibTeX) 영역 -->
-    <div class="section">
-        <h2>Citation</h2>
-        <pre class="bibtex"><code>@inproceedings{your_project_2026,
-  title={당신의 프로젝트 논문 제목},
-  author={저자 목록},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2026}
-}</code></pre>
-    </div>
-</div>
+        async function loadYaml(path) {
+            const response = await fetch(path, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`${path} 파일을 불러오지 못했습니다.`);
+            }
+            return jsyaml.load(await response.text());
+        }
 
+        function startAutoReload() {
+            if (location.protocol === 'file:') {
+                return;
+            }
+
+            let currentVersion = null;
+
+            async function checkVersion() {
+                try {
+                    const response = await fetch(`__version?t=${Date.now()}`, { cache: 'no-store' });
+                    if (!response.ok) {
+                        return;
+                    }
+
+                    const nextVersion = await response.text();
+                    if (currentVersion && nextVersion !== currentVersion) {
+                        location.reload();
+                        return;
+                    }
+
+                    currentVersion = nextVersion;
+                } catch (error) {
+                    // The dev server may be stopped while editing.
+                }
+            }
+
+            checkVersion();
+            setInterval(checkVersion, 1000);
+        }
+
+        function setHeroBackground(site) {
+            const hero = document.querySelector('.hero');
+            const background = site.hero_background || 'fig/hero-bg.svg';
+            hero.style.setProperty('--hero-bg', `url("${background}")`);
+        }
+
+        function renderHeader(site) {
+            const header = document.querySelector('#site-header');
+            const authors = (site.authors || []).map((author) => {
+                const url = normalizeUrl(author.url);
+
+                if (!url) {
+                    const span = document.createElement('span');
+                    span.textContent = author.name;
+                    return span;
+                }
+
+                const link = document.createElement('a');
+                link.href = url;
+                link.textContent = author.name;
+                link.className = 'author-link';
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                return link;
+            });
+
+            header.append(
+                createElement('h1', site.title)
+            );
+
+            document.querySelector('#site-venue').textContent = site.venue || '';
+
+            document.querySelector('#site-meta').append(
+                createJoinedNodes('div', authors, ', ', 'authors'),
+                createElement('div', site.author_note, 'author-note'),
+                createElement('div', site.affiliations, 'affiliations')
+            );
+        }
+
+        function normalizeUrl(url) {
+            if (!url || url === '#') {
+                return '';
+            }
+
+            if (/^https?:\/\//i.test(url)) {
+                return url;
+            }
+
+            return `https://${url}`;
+        }
+
+        function renderLinks(site) {
+            const nav = document.querySelector('#site-links');
+            const links = site.links || [];
+
+            links.forEach((item) => {
+                const link = document.createElement('a');
+                link.href = item.url || '#';
+                link.className = 'btn';
+
+                if (item.modal) {
+                    link.href = item.modal;
+                    link.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        openMediaModal(item.modal, item.label || 'Poster');
+                    });
+                }
+
+                if (item.target) {
+                    link.target = item.target;
+                    link.rel = 'noopener noreferrer';
+                }
+
+                const icon = item.svg ? createSvgIcon(item) : (item.icon ? createFontIcon(item.icon) : null);
+
+                if (icon) {
+                    link.appendChild(icon);
+                }
+
+                link.appendChild(document.createTextNode(item.label || 'Link'));
+                nav.appendChild(link);
+            });
+        }
+
+        function setupMediaModal() {
+            const modal = document.querySelector('#media-modal');
+            const closeButton = modal.querySelector('.media-modal-close');
+            const content = document.querySelector('#media-modal-content');
+            const pdf = document.querySelector('#media-modal-pdf');
+
+            content.addEventListener('load', () => {
+                content.style.display = 'block';
+                pdf.style.display = 'none';
+                document.querySelector('#media-modal-message').style.display = 'none';
+            });
+
+            content.addEventListener('error', () => {
+                content.style.display = 'none';
+                const message = document.querySelector('#media-modal-message');
+                message.textContent = 'Poster file is not available yet. Add the poster file to fig and update site.yaml.';
+                message.style.display = 'block';
+            });
+
+            closeButton.addEventListener('click', closeMediaModal);
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeMediaModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeMediaModal();
+                }
+            });
+        }
+
+        function openMediaModal(src, label) {
+            const modal = document.querySelector('#media-modal');
+            const content = document.querySelector('#media-modal-content');
+            const pdf = document.querySelector('#media-modal-pdf');
+            const message = document.querySelector('#media-modal-message');
+            message.style.display = 'none';
+            content.src = '';
+            pdf.src = '';
+
+            if (/\.pdf($|\?)/i.test(src)) {
+                content.style.display = 'none';
+                pdf.style.display = 'block';
+                pdf.src = src;
+                pdf.title = label;
+            } else {
+                pdf.style.display = 'none';
+                content.style.display = 'block';
+                content.src = src;
+                content.alt = label;
+            }
+
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMediaModal() {
+            const modal = document.querySelector('#media-modal');
+            const content = document.querySelector('#media-modal-content');
+            const pdf = document.querySelector('#media-modal-pdf');
+            const message = document.querySelector('#media-modal-message');
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            content.src = '';
+            pdf.src = '';
+            pdf.style.display = 'none';
+            message.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function renderImageSection(section) {
+            const element = createSection(section);
+            element.appendChild(createImage(section.image));
+            return element;
+        }
+
+        function renderTextSection(section) {
+            const element = createSection(section);
+            appendParagraphs(element, section.paragraphs || []);
+            return element;
+        }
+
+        function renderOverviewSection(section) {
+            const element = renderTextSection(section);
+
+            if (section.image) {
+                element.appendChild(createImage(section.image));
+            }
+
+            if (section.badges?.length) {
+                const badgeGrid = document.createElement('div');
+                badgeGrid.className = 'badge-grid';
+
+                section.badges.forEach((badge) => {
+                    const card = document.createElement('article');
+                    card.className = 'keyword-badge';
+                    card.append(
+                        createElement('h3', badge.title),
+                        createElement('p', badge.description)
+                    );
+                    badgeGrid.appendChild(card);
+                });
+
+                element.appendChild(badgeGrid);
+            }
+
+            if (section.contributions?.length) {
+                const box = document.createElement('div');
+                box.className = 'highlight-box';
+
+                const title = document.createElement('strong');
+                title.textContent = section.contribution_title || 'Key Contributions:';
+
+                const list = document.createElement('ul');
+                section.contributions.forEach((item) => {
+                    list.appendChild(createElement('li', item));
+                });
+
+                box.append(title, list);
+                element.appendChild(box);
+            }
+
+            return element;
+        }
+
+        function renderMethodSection(section) {
+            const element = renderTextSection(section);
+
+            if (section.image) {
+                element.appendChild(createImage(section.image, 'method-img'));
+            }
+
+            appendParagraphs(element, section.after_image_paragraphs || []);
+            return element;
+        }
+
+        function renderResultsSection(section) {
+            const element = createSection(section);
+            const grid = document.createElement('div');
+            grid.className = 'grid-2 results-grid';
+            const media = [];
+
+            (section.items || []).forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                const image = createImage(item.image);
+
+                if (item.image?.object_position) {
+                    image.style.objectPosition = item.image.object_position;
+                }
+
+                if (item.image?.object_fit) {
+                    image.style.objectFit = item.image.object_fit;
+                }
+
+                const frame = document.createElement('div');
+                frame.className = 'result-media-frame';
+                frame.appendChild(image);
+                media.push(image);
+
+                card.append(frame, createElement('p', item.caption));
+                grid.appendChild(card);
+            });
+
+            syncResultsAspectRatio(grid, media[0], section.aspect_scale || 1);
+            element.appendChild(grid);
+            return element;
+        }
+
+        function syncResultsAspectRatio(grid, referenceImage, aspectScale) {
+            if (!referenceImage) {
+                return;
+            }
+
+            const applyRatio = () => {
+                if (!referenceImage.naturalWidth || !referenceImage.naturalHeight) {
+                    return;
+                }
+
+                grid.style.setProperty(
+                    '--results-aspect-ratio',
+                    `${referenceImage.naturalWidth * aspectScale} / ${referenceImage.naturalHeight}`
+                );
+            };
+
+            if (referenceImage.complete) {
+                applyRatio();
+            } else {
+                referenceImage.addEventListener('load', applyRatio, { once: true });
+            }
+        }
+
+        function renderCitationSection(section) {
+            const element = createSection(section);
+            const pre = document.createElement('pre');
+            pre.className = 'bibtex';
+
+            const code = document.createElement('code');
+            code.textContent = section.bibtex || '';
+
+            pre.appendChild(code);
+            element.appendChild(pre);
+            return element;
+        }
+
+        function createSection(section) {
+            const element = document.createElement('section');
+            element.className = 'section';
+
+            if (section.title) {
+                element.appendChild(createElement('h2', section.title));
+            }
+
+            return element;
+        }
+
+        function appendParagraphs(parent, paragraphs) {
+            paragraphs.forEach((text) => {
+                parent.appendChild(createElement('p', text, 'text-justify'));
+            });
+        }
+
+        function createImage(image = {}, extraClassName = '') {
+            const img = document.createElement('img');
+            img.src = image.src || '';
+            img.alt = image.alt || '';
+            img.className = ['responsive-img', extraClassName].filter(Boolean).join(' ');
+            return img;
+        }
+
+        function createSvgIcon(item = {}) {
+            const icon = document.createElement('img');
+            icon.src = item.svg;
+            icon.alt = '';
+            icon.className = 'btn-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            return icon;
+        }
+
+        function createFontIcon(iconClass) {
+            const icon = document.createElement('i');
+            icon.className = iconClass || 'fas fa-link';
+            return icon;
+        }
+
+        function createElement(tagName, text, className) {
+            const element = document.createElement(tagName);
+            if (className) {
+                element.className = className;
+            }
+            element.textContent = text || '';
+            return element;
+        }
+
+        function createJoinedNodes(tagName, nodes, separator, className) {
+            const element = document.createElement(tagName);
+            element.className = className;
+
+            nodes.forEach((node, index) => {
+                if (index > 0) {
+                    element.appendChild(document.createTextNode(separator));
+                }
+                element.appendChild(node);
+            });
+
+            return element;
+        }
+
+        function renderError(error) {
+            const sectionRoot = document.querySelector('#sections');
+            sectionRoot.innerHTML = '';
+            sectionRoot.appendChild(
+                createElement('div', `YAML 데이터를 읽는 중 문제가 생겼습니다: ${error.message}`, 'error')
+            );
+        }
+    </script>
 </body>
 </html>

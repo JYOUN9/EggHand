@@ -1,0 +1,13 @@
+type: overview
+title: "Overview"
+paragraphs:
+  - "EggHand focuses on solving the problem of accurately forecasting future 3D hand pose sequences from egocentric video under severe ego-motion, dexterous hand articulation, and high-level intent-driven motion changes."
+badges:
+  - title: "Hand Pose Forecasting"
+    description: "Predict future 3D hand pose sequences from first-person observations to anticipate human intentions and interactions."
+  - title: "Egocentric Video"
+    description: "Provide viewpoint-aware contextual information from first-person video streams that remains robust under severe ego-motion."
+  - title: "VLA Model"
+    description: "Pair an egocentric-specialized VLM encoder with a VLA decoder to capture motion dynamics and enable text-conditioned generation."
+  - title: "Geometric Aware Loss"
+    description: "Enforce absolute spatial alignment, wrist-relative stability, and intra-hand geometric consistency to prevent global pose drift."

@@ -1,0 +1,7 @@
+type: method
+title: "Method"
+image:
+  src: "fig/method.jpg"
+  alt: "Method pipeline"
+after_image_paragraphs:
+  - "EggHand addresses egocentric 3D hand pose forecasting by predicting future hand motion from past hand poses, first-person video, and language-based task context. The method represents all hand poses in a normalized egocentric canonical frame to reduce the effect of camera motion, while preserving the intrinsic structure of hand articulation. To handle the challenges of fast viewpoint changes and intent-driven hand movements, EggHand fuses an egocentric video–text encoder with a VLA-based action decoder. The video–text encoder provides viewpoint-aware semantic context from first-person video, and the action decoder generates temporally structured future hand trajectories. During training, geometry-aware losses supervise absolute joint accuracy, wrist-relative stability, and pairwise joint consistency, enabling stable and physically plausible 3D hand motion prediction under severe ego-motion."

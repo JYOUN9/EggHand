@@ -1,0 +1,15 @@
+type: results
+title: "Results"
+aspect_scale: 1.15
+items:
+  - caption: "3D Hand Pose Forecasting Sample"
+    image:
+      src: "fig/result-task-1.gif"
+      alt: "Task 1 result"
+      object_fit: "contain"
+  - caption: "Hand Pose Video Overlay"
+    image:
+      src: "fig/result-task-2.gif"
+      alt: "Task 2 result"
+      object_fit: "cover"
+      object_position: "center center"

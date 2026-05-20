@@ -1,0 +1,33 @@
+title: "EggHand: A Multimodal Foundation Model for Egocentric Hand Pose Forecasting"
+brand: "EggHand"
+venue: "CVPRF 2026"
+hero_background: "fig/egghand_background.png"
+authors:
+  - name: "Jaeyoung Choi*"
+    url: "www.linkedin.com/in/jyoung01"
+  - name: "Hyeondong Kim*"
+    url: "#"
+  - name: "Yujin Kim"
+    url: "#"
+  - name: "Daehee Park\u2020"
+    url: "#"
+author_note: "(*Equal contribution, \u2020Corresponding author)"
+affiliations: "Daegu Gyeongbuk Institute of Science & Technology"
+links:
+  - label: "Paper"
+    url: "https://arxiv.org/abs/2605.07642"
+    svg: "fig/paper.svg"
+  - label: "Supp"
+    url: "#"
+    svg: "fig/supp.svg"
+  - label: "Poster"
+    url: "fig/poster.pdf"
+    svg: "fig/poster.svg"
+    target: "_blank"
+sections:
+  - teaser
+  - abstract
+  - overview
+  - method
+  - results
+  - citation
