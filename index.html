@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로젝트 페이지 템플릿</title>
+    <!-- 웹 폰트 및 아이콘 라이브러리 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -35,7 +36,7 @@
         .authors a:hover { text-decoration: underline; }
         .affiliations { text-align: center; font-size: 0.9em; color: #666; margin-bottom: 30px; }
 
-        /* 링크 버튼 스타일 (논문, 깃허브 등) */
+        /* 링크 버튼 스타일 (논문, Supp, Poster 등) */
         .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; }
         .btn { 
             display: inline-flex; align-items: center; 
@@ -56,8 +57,8 @@
             margin-bottom: 20px; 
         }
         
-        /* 대표 이미지/영상 */
-        .teaser-img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+        /* 반응형 이미지/영상 (Teaser 및 Method Pipeline 등) */
+        .responsive-img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
         .text-justify { text-align: justify; }
 
         /* 결과물을 보여주기 위한 2단 그리드 */
@@ -75,6 +76,15 @@
         }
         .video-card p { font-size: 0.95em; color: #555; margin-top: 10px; font-weight: bold; }
 
+        /* 강조 박스 (Method 등에서 주요 기여점 요약 시 사용) */
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
         /* 인용(BibTeX) 코드 박스 */
         .bibtex { 
             background-color: #f4f4f4; 
@@ -90,9 +100,10 @@
 <body>
 
 <div class="container">
+    <!-- 1. 헤더 영역 -->
     <header>
         <h1>프로젝트 제목(Title)을 여기에 입력하세요</h1>
-        <div class="venue">학회명 또는 발표 연도 (예: CVPR 2026)</div>
+        <div class="venue">학회명 또는 발표 연도 (예: CVPR 2026 / NeurIPS 2026)</div>
         <div class="authors">
             <a href="#">저자 1</a>, <a href="#">저자 2</a>, <a href="#">저자 3</a>
         </div>
@@ -101,44 +112,77 @@
         </div>
     </header>
 
+    <!-- 2. 배지/링크 영역 -->
     <div class="links">
-        <a href="#" class="btn"><i class="fas fa-file-pdf"></i> Paper (arXiv)</a>
-        <a href="#" class="btn"><i class="fab fa-github"></i> Code</a>
-        <a href="#" class="btn"><i class="fas fa-database"></i> Dataset</a>
-        <a href="#" class="btn"><i class="fas fa-play-circle"></i> Video</a>
+        <a href="#" class="btn"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="#" class="btn"><i class="fas fa-paperclip"></i> Supp</a>
+        <a href="#" class="btn"><i class="fas fa-chalkboard"></i> Poster</a>
     </div>
 
+    <!-- 3. 대표 이미지(Teaser) 영역 -->
     <div class="section">
-        <img src="https://via.placeholder.com/1000x400?text=Teaser+Image+or+GIF" alt="Teaser" class="teaser-img">
+        <img src="https://via.placeholder.com/1000x400?text=Teaser+Image+or+GIF" alt="Teaser" class="responsive-img">
     </div>
 
+    <!-- 4. 초록(Abstract) 영역 -->
     <div class="section">
         <h2>Abstract</h2>
         <p class="text-justify">
-            여기에 프로젝트의 초록(Abstract)을 작성합니다. 연구의 배경, 제안하는 방법론, 그리고 주요 성과를 요약하여 설명합니다. UniDex 페이지처럼 연구의 핵심을 글로 깔끔하게 풀어내는 공간입니다.
+            여기에 프로젝트의 초록(Abstract)을 작성합니다. 연구의 배경, 제안하는 방법론, 그리고 주요 성과를 요약하여 설명합니다. 논문의 Abstract 파트를 그대로 가져오거나, 웹페이지 방문자를 위해 조금 더 읽기 쉽게 풀어써도 좋습니다.
         </p>
     </div>
 
+    <!-- 5. Overview 영역 추가 -->
     <div class="section">
-        <h2>실험 결과 및 데모 (Tool-Use Tasks)</h2>
+        <h2>Overview</h2>
+        <p class="text-justify">
+            이 연구는 Vision-Language-Action (VLA) 파운데이션 모델이 가지는 기존의 한계를 극복하고, 새로운 환경에서의 일반화 성능을 높이는 것을 목표로 합니다. 특히 Egocentric 시점에서의 데이터를 활용하여... (연구의 핵심 동기와 목표를 1~2문단으로 서술합니다).
+        </p>
+        <div class="highlight-box">
+            <strong>Key Contributions:</strong>
+            <ul>
+                <li>첫째, 대규모 데이터셋을 활용한 새로운 모듈 구조 제안</li>
+                <li>둘째, Cross-Embodiment 환경에서도 강건하게 동작하는 적응형 파이프라인 구축</li>
+                <li>셋째, 기존 SOTA 모델 대비 성능 향상 입증</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. Method 영역 추가 -->
+    <div class="section">
+        <h2>Method</h2>
+        <p class="text-justify">
+            우리가 제안하는 프레임워크의 전체적인 파이프라인은 아래와 같습니다. 입력된 시각적 정보와 언어 명령은 먼저 특정 인코더를 거치게 되며, 이후 제안하는 핵심 모듈을 통해... (구체적인 모델 아키텍처나 알고리즘의 흐름을 설명합니다).
+        </p>
+        <!-- 방법론(아키텍처) 파이프라인 이미지 -->
+        <img src="https://via.placeholder.com/1000x450?text=Method+Pipeline+Architecture" alt="Method Pipeline" class="responsive-img">
+        <p class="text-justify">
+            위 그림에서 볼 수 있듯이, 본 프레임워크는 크게 (1) 특징 추출 단계, (2) K/V Intervention 기반의 모듈식 적응 단계, (3) 최종 행동 및 포즈 예측 단계로 나뉩니다. 각 모듈의 수학적 수식과 구체적인 알고리즘은 논문 본문을 참고해 주시기 바랍니다.
+        </p>
+    </div>
+
+    <!-- 7. 주요 결과물 및 데모 -->
+    <div class="section">
+        <h2>실험 결과 및 데모</h2>
         <div class="grid-2">
             <div class="video-card">
                 <img src="https://via.placeholder.com/500x300?text=Task+1+Video/GIF" alt="Task 1">
-                <p>작업 설명 1 (예: 가위로 봉지 자르기)</p>
+                <p>Task 1: 환경 내 객체 조작</p>
             </div>
             <div class="video-card">
                 <img src="https://via.placeholder.com/500x300?text=Task+2+Video/GIF" alt="Task 2">
-                <p>작업 설명 2 (예: 커피 만들기)</p>
+                <p>Task 2: 연속적인 행동 수행</p>
             </div>
         </div>
     </div>
 
+    <!-- 8. 인용(BibTeX) 영역 -->
     <div class="section">
-        <h2>Citation (BibTeX)</h2>
-        <pre class="bibtex"><code>@article{your_project_2026,
+        <h2>Citation</h2>
+        <pre class="bibtex"><code>@inproceedings{your_project_2026,
   title={당신의 프로젝트 논문 제목},
   author={저자 목록},
-  journal={저널 또는 학회 이름},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year={2026}
 }</code></pre>
     </div>
