@@ -1,9 +1,11 @@
 type: citation
 title: "Citation (To be updated later)"
 bibtex: |
-  @article{choi2026egghand,
-  title={EggHand: A Multimodal Foundation Model for Egocentric Hand Pose Forecasting},
-  author={Choi, Jaeyoung and Kim, Hyeondong and Kim, Yujin and Park, Daehee},
-  journal={arXiv preprint arXiv:2605.07642},
-  year={2026}
-  }
+  @InProceedings{Choi_2026_CVPR,
+    author    = {Choi, Jaeyoung and Kim, Hyeondong and Kim, Yujin and Park, Daehee},
+    title     = {EggHand: A Multimodal Foundation Model for Egocentric Hand Pose Forecasting},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Findings},
+    month     = {June},
+    year      = {2026},
+    pages     = {3521-3531}
+}
